@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,11 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setMode(int selectedMode) {
         switch (selectedMode) {
-            case R.id.action_list:
-                break;
-            case R.id.action_grid:
-                break;
-            case R.id.action_cardview:
+            case R.id.about_me:
+                Intent AboutMe = new Intent(MainActivity.this, AboutMe.class);
+                startActivity(AboutMe);
                 break;
         }
     }

@@ -2,15 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_list"
-        android:title="List"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/action_grid"
-        android:title="Grid"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/action_cardview"
-        android:title="with CardView"
-        app:showAsAction="never"/>
+        android:id="@+id/about_me"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:title="About Me"
+        app:showAsAction="ifRoom" />
 </menu>

@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Code Course</string>
+    <string name="user_name">Fahmi Alfath</string>
+    <string name="user_email">fahmi243alfath@gmail.com</string>
     <string name="code_name">code_name</string>
     <string name="detail">detail</string>
     <string name="btn_detail">btn_detail</string>
+    <string name="label_name">Name</string>
+    <string name="label_email">Email</string>
+    <string name="btnEmail">Send Email</string>
+    <string name="btnPhone">Call Us</string>
 </resources>

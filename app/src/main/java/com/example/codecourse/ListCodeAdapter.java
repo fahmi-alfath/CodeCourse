@@ -1,13 +1,18 @@
 package com.example.codecourse;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -31,28 +36,18 @@ public class ListCodeAdapter  extends RecyclerView.Adapter<ListCodeAdapter.ListV
 
     @Override
     public void onBindViewHolder(@NonNull final ListViewHolder holder, int position) {
-        Code code = listCode.get(position);
+        final Code code = listCode.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(code.getPhoto())
-                .apply(new RequestOptions().override(55, 55))
                 .into(holder.imgPhoto);
         holder.tvName.setText(code.getName());
-        holder.tvBtnDetail.setText("Baca : " + code.getName());
         holder.tvDetail.setText(code.getDetail());
-        holder.tvName.setOnClickListener(new View.OnClickListener() {
+        holder.rlList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "Favorite " +
-                        listCode.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        holder.tvName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "Share " +
-                        listCode.get(holder.getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), DetailCode.class);
+                intent.putExtra("name",code.getName());
+                v.getContext().startActivity(intent);
             }
         });
     }
@@ -65,12 +60,13 @@ public class ListCodeAdapter  extends RecyclerView.Adapter<ListCodeAdapter.ListV
     public class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView imgPhoto;
         TextView tvName, tvDetail, tvBtnDetail;
+        RelativeLayout rlList;
         ListViewHolder(View itemView) {
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
             tvName = itemView.findViewById(R.id.tv_item_name);
             tvDetail = itemView.findViewById(R.id.tv_item_detail);
-            tvBtnDetail = itemView.findViewById(R.id.btn_detail);
+            rlList = itemView.findViewById(R.id.list_id);
         }
     }
 }
