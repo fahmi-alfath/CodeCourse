@@ -21,6 +21,10 @@ public class DetailCode extends AppCompatActivity {
             getSupportActionBar().setTitle("Detail");
         }
 
+        String title = getIntent().getStringExtra("key").toString();
+
+        getSupportActionBar().setTitle(title);
+
         TextView tvDetailName = findViewById(R.id.detail_name);
         String name = getIntent().getStringExtra(EXTRA_NAME);
 

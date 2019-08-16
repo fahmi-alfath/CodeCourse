@@ -46,6 +46,8 @@ public class ListCodeAdapter  extends RecyclerView.Adapter<ListCodeAdapter.ListV
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DetailCode.class);
+                String title = code.getName();
+                intent.putExtra("key", title);
                 intent.putExtra("name",code.getName());
                 v.getContext().startActivity(intent);
             }
