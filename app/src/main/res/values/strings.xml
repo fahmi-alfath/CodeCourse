@@ -4,9 +4,18 @@
     <string name="user_email">fahmi243alfath@gmail.com</string>
     <string name="code_name">code_name</string>
     <string name="detail">detail</string>
-    <string name="btn_detail">btn_detail</string>
+    <string name="btn_detail">Start Learning</string>
     <string name="label_name">Name</string>
     <string name="label_email">Email</string>
-    <string name="btnEmail">Send Email</string>
-    <string name="btnPhone">Call Us</string>
+    <string name="btnEmail">Email</string>
+    <string name="btnPhone">Call</string>
+    <string name="detail_title">Definition</string>
+    <string name="detail_text">text</string>
+    <string name="detail_title1">First Appeared / Initial Release</string>
+    <string name="detail_release">release</string>
+    <string name="detail_title2">Definition</string>
+    <string name="detail_extension">extension</string>
+    <string name="detail_title3">File Extension</string>
+    <string name="detail_title4">Source</string>
+    <string name="detail_source">source</string>
 </resources>

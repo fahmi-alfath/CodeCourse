@@ -1,11 +1,40 @@
 package com.example.codecourse;
 
+import android.content.Context;
+
 public class Code {
 
     private String id;
     private String name;
     private String detail;
     private String photo;
+    private String release;
+    private String extension;
+    private String source;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
+
+    public String getRelease() {
+        return release;
+    }
+
+    public void setRelease(String release) {
+        this.release = release;
+    }
 
     public String getId() {
         return id;

@@ -2,22 +2,19 @@ package com.example.codecourse;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class ListCodeAdapter  extends RecyclerView.Adapter<ListCodeAdapter.ListViewHolder> {
@@ -37,18 +34,25 @@ public class ListCodeAdapter  extends RecyclerView.Adapter<ListCodeAdapter.ListV
     @Override
     public void onBindViewHolder(@NonNull final ListViewHolder holder, int position) {
         final Code code = listCode.get(position);
-        Glide.with(holder.itemView.getContext())
-                .load(code.getPhoto())
-                .into(holder.imgPhoto);
+
+        final int resID = getResId(code.getPhoto(), R.drawable.class);
+        holder.imgPhoto.setImageResource(resID);
+        
         holder.tvName.setText(code.getName());
         holder.tvDetail.setText(code.getDetail());
         holder.rlList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DetailCode.class);
-                String title = code.getName();
-                intent.putExtra("key", title);
-                intent.putExtra("name",code.getName());
+
+                intent.putExtra("key", code.getName());
+                intent.putExtra("title",code.getName());
+                intent.putExtra("text",code.getDetail());
+                intent.putExtra("photo",resID);
+                intent.putExtra("release",code.getRelease());
+                intent.putExtra("extension",code.getExtension());
+                intent.putExtra("source",code.getSource());
+
                 v.getContext().startActivity(intent);
             }
         });
@@ -69,6 +73,17 @@ public class ListCodeAdapter  extends RecyclerView.Adapter<ListCodeAdapter.ListV
             tvName = itemView.findViewById(R.id.tv_item_name);
             tvDetail = itemView.findViewById(R.id.tv_item_detail);
             rlList = itemView.findViewById(R.id.list_id);
+        }
+    }
+
+    public static int getResId(String resName, Class<?> c) {
+
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 }
